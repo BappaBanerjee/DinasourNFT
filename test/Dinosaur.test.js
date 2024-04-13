@@ -18,6 +18,16 @@ describe("Dinosaur NFT testing", () => {
     EGGTokenAddr = await EGGToken.getAddress();
   });
 
+  describe("initialization", () => {
+    it("shoudl initialize the owner", async function () {
+      expect(await Dinosaur.owner()).to.be.equal(deployer);
+    });
+
+    it("should initialize the egg token address", async function () {
+      expect(await Dinosaur.EGG()).to.be.equal(EGGTokenAddr);
+    });
+  });
+
   describe("myDino", () => {
     it("should mint my dino", async function () {
       await Dinosaur.connect(account1).myDino({
